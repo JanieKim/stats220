@@ -10,4 +10,4 @@ A little about me:
 
 A meme that captures how I currently feel about my university studies is
 
-![Uploading giphy.gif…]()
+![giphy](https://github.com/user-attachments/assets/47a73ca7-1016-40eb-91c5-86530ec698c4)
