@@ -1,7 +1,6 @@
 # stats220
-
+## About Me
 This is my repo for STATS 220.
-
 A little about me:
 
 - I am undertaking a degree in computer science.
