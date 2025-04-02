@@ -6,14 +6,16 @@ output: html_fragment
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
 library(tidyverse)
+
 logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRTy6mFJV6JPSQC2L2asAs94mk3cIYhO5uW5emfRnZMxUeJ8gp8LE7ffVhSbJ73Tr4f3jTIRJ-7ViFG/pub?output=csv") 
+
 latest_data <- logged_data %>%
   rename(
     walk_duration = 'How long did you walk Izzy',
     num_dogs = 'How many dogs did she meet?(numbers only)',
     dog_size = 'What size was the dog/dogs we met today?',
     dog_colour = 'What colour was the dog/dogs?',
-    dog_name = "If you learned the dog's name, what was it? (Optional)" 
+    dog_name = "If you learned the dog's name, what was it? (Optional)"
   )
 
 # Summary values
@@ -39,20 +41,24 @@ h2 {
   font-size: 20px;
   text-align: center;
   color: #6a5acd;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 ```
 
 ## What's going on with this data?
-
 Over 22 walks with Izzy, I have recorded observation about the dogs she met.
 I tracked how many dogs she met, what *size and colour they were, and how long the walk* was.
 
 Izzy and I went on **`r nrow(latest_data)`** walks together.  
 On average, Izzy met **`r round(mean_dogs, 1)`** dogs per walk.  
 The most she ever met on a single walk was **`r max_dog`** dogs!
+name of dogs that Izzy met: **`r dog_names_text`**. 
 
 ```{r}
+### Dog names
+dog_names <- latest_data$dog_name[!is.na(latest_data$dog_name)] 
+dog_names_text <- paste(dog_names, collapse = ", ") 
+
 ### walk duration
 ggplot(latest_data, aes(x = walk_duration)) +
   geom_bar(fill = "#DA70D6") +
@@ -81,4 +87,4 @@ ggplot(latest_data, aes(x = num_dogs)) +
 
 The best pet to have is a `r best_pet` of course!
 
-![](https://c.tenor.com/-qBsG1HwR4oAAAAC/tenor.gif)
+![](https://c.tenor.com/-qBsG1HwR4oAAAAC/tenor.gif) 
