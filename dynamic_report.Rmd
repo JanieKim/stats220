@@ -21,17 +21,28 @@ latest_data <- logged_data %>%
 # Summary values
 mean_dogs <- mean(latest_data$num_dogs, na.rm = TRUE)
 max_dog <- max(latest_data$num_dogs, na.rm = TRUE)
+### Dog names
+dog_names <- latest_data$dog_name[!is.na(latest_data$dog_name)] 
+dog_names_text <- paste(dog_names, collapse = ", ") 
+
+best_pet <- "dog"
 ```
 
 ```{css}
 body {
   font-family: 'Ubuntu', cursive;
-  background-color: #e2c5b8; padding: 50px;
+  background-color: #e2c5c9; padding: 50px;
+  font-size: 30px 
   font-weight: bold;
 }
 
 h2 {
   color: #CC2D81;
+  background-color: #EBECF0;
+  font-weight: bold;
+}
+h3 {
+  color: #Ce1E99;
   background-color: #EBECF0;
   font-weight: bold;
 }
@@ -44,21 +55,23 @@ h2 {
   margin-bottom: 20px;
 }
 ```
-
 ## What's going on with this data?
 Over 22 walks with Izzy, I have recorded observation about the dogs she met.
 I tracked how many dogs she met, what *size and colour they were, and how long the walk* was.
 
-Izzy and I went on **`r nrow(latest_data)`** walks together.  
+
+## Data details
+Izzy and I went on **`r nrow(latest_data)`** walks together.
+
 On average, Izzy met **`r round(mean_dogs, 1)`** dogs per walk.  
+
 The most she ever met on a single walk was **`r max_dog`** dogs!
+
+
 name of dogs that Izzy met: **`r dog_names_text`**. 
 
-```{r}
-### Dog names
-dog_names <- latest_data$dog_name[!is.na(latest_data$dog_name)] 
-dog_names_text <- paste(dog_names, collapse = ", ") 
 
+```{r}
 ### walk duration
 ggplot(latest_data, aes(x = walk_duration)) +
   geom_bar(fill = "#DA70D6") +
@@ -85,6 +98,10 @@ ggplot(latest_data, aes(x = num_dogs)) +
 
 ```
 
+
+
+
+
 The best pet to have is a `r best_pet` of course!
 
-![](https://c.tenor.com/-qBsG1HwR4oAAAAC/tenor.gif) 
+![](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzlicHQxeWxka280NHQyb3d3dXB1bHpxazRiZXY4dTFqZ2lwZWg0NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QvBoMEcQ7DQXK/giphy.gif) 
